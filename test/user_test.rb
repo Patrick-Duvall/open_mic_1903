@@ -1,6 +1,7 @@
 require './lib/joke'
 require "./lib/user"
 require "minitest/autorun"
+require "pry"
 
 class UserTest<Minitest::Test
 
@@ -31,6 +32,13 @@ class UserTest<Minitest::Test
       @sal.learn(@joke_2)
       @sal.tell(@ali, @joke_2)
       assert_equal [@joke_1, @joke_2], @ali.jokes
+  end
+
+  def test_knows_jokes_told
+    @sal.learn(@joke_1)
+    @sal.tell(@ali, @joke_1)
+    pry
+    assert_equal [@joke_1], @sal.jokes_told
   end
 
   def test_user_knows_jokes_by_id
