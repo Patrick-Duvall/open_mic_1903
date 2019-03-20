@@ -10,9 +10,11 @@ class OpenMic
   def welcome(user)
     @performers << user
   end
-# I know this is terrible, I feel I'm missing something obvious and wanted to talk to someone and had to implement something so here.
+# I feel I'm missing something obvious. This does add some functionality in that it gives users informaion on what jokes they've told.
   def repeated_jokes?
-    @performers.map(&:jokes_told).flatten.uniq != @performers.map(&:jokes_told).flatten
+    specific_jokes = @performers.map(&:jokes_told).flatten.uniq
+    all_jokes = @performers.map(&:jokes_told).flatten
+    specific_jokes != all_jokes
   end
 
 
